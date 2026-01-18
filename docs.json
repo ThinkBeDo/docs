@@ -120,12 +120,7 @@
         "label": "Support",
         "href": "mailto:support@thinkbedo.com"
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.thinkbedo.com"
-    }
+    ]
   },
   "contextual": {
     "options": [
