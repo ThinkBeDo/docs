@@ -1,43 +1,84 @@
-# Mintlify Starter Kit
+# 🎉 DEPLOYMENT SUCCESS
 
-Use the starter kit to get your docs deployed and ready to customize.
+**Your Mintlify Documentation is LIVE!**
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+---
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+## 🌐 YOUR LIVE SITE
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+**Documentation**: https://hp3.mintlify.app/  
+**MCP Server**: https://hp3.mintlify.app/mcp
 
-## Development
+---
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
+## ⚡ CONNECT MCP TO CLAUDE.AI NOW
 
-```
-npm i -g mint
-```
+### **Quick Steps:**
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
+1. **Go to**: https://claude.ai/settings
+2. **Click**: Connectors (left sidebar)
+3. **Click**: "Add custom connector"
+4. **Enter**:
+   - **Name**: `ThinkBeDo Documentation`
+   - **URL**: `https://hp3.mintlify.app/mcp`
+   - **Description**: `ThinkBeDo project documentation`
+5. **Click**: "Add connector"
 
-```
+### **Test It:**
+
+Start a new Claude.ai conversation:
+1. Click the **+** button (attachments)
+2. Select "ThinkBeDo Documentation"
+3. Ask: "Search ThinkBeDo docs for ScalePilot overview"
+
+---
+
+## 📊 WHAT'S LIVE
+
+✅ **Homepage**: https://hp3.mintlify.app/  
+✅ **Projects Tab**: https://hp3.mintlify.app/projects/scalepilot/overview  
+✅ **ScalePilot Docs**: Architecture, changelog, known issues, dev notes  
+✅ **January Changelog**: https://hp3.mintlify.app/changelogs/2026-01  
+✅ **MCP Server**: https://hp3.mintlify.app/mcp  
+✅ **Blue Theme**: #3B82F6 colors applied  
+✅ **Search**: ⌘K search functionality  
+
+---
+
+## 🔄 UPDATE WORKFLOW
+
+```bash
+# Edit files in /Users/tylerlafleur/mintlify-docs
+# Preview locally
 mint dev
+
+# Commit and push
+git add -A
+git commit -m "feat: your changes"
+git push origin main
+
+# Auto-deploys in ~2 minutes
+# MCP server updates automatically
 ```
 
-View your local preview at `http://localhost:3000`.
+---
 
-## Publishing changes
+## 📚 COMPLETE GUIDES
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+**Full Setup Guide**: `LIVE_DEPLOYMENT_GUIDE.md`  
+**Deployment Details**: `DEPLOYMENT_COMPLETE.md`  
+**Automation Setup**: `AUTO_UPDATE_GUIDE.md`
 
-## Need help?
+---
 
-### Troubleshooting
+## 🎯 NEXT STEPS
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+1. ✅ **Connect MCP to Claude.ai** (instructions above)
+2. ✅ **Test MCP integration** with search queries
+3. ⏳ **Optional**: Set up custom domain (`docs.thinkbedo.com`)
+4. ⏳ **Optional**: Activate Windsurf automation for code repos
 
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+---
+
+**Dashboard**: https://dashboard.mintlify.com  
+**GitHub**: https://github.com/ThinkBeDo/docs

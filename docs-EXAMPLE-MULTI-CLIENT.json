@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "ThinkBedo Documentation",
+  "name": "ThinkBeDo Documentation",
   "colors": {
     "primary": "#3B82F6",
     "light": "#60A5FA",
@@ -77,19 +77,37 @@
         "tab": "Projects",
         "groups": [
           {
-            "group": "All Projects",
+            "group": "ScalePilot",
             "pages": [
-              {
-                "group": "ScalePilot",
-                "expanded": false,
-                "pages": [
-                  "projects/scalepilot/overview",
-                  "projects/scalepilot/architecture",
-                  "projects/scalepilot/changelog",
-                  "projects/scalepilot/known-issues",
-                  "projects/scalepilot/development-notes"
-                ]
-              }
+              "projects/scalepilot/overview",
+              "projects/scalepilot/architecture",
+              "projects/scalepilot/changelog",
+              "projects/scalepilot/known-issues",
+              "projects/scalepilot/development-notes"
+            ]
+          },
+          {
+            "group": "Client Name 1",
+            "pages": [
+              "projects/client1/overview",
+              "projects/client1/architecture",
+              "projects/client1/setup",
+              "projects/client1/deployment"
+            ]
+          },
+          {
+            "group": "Client Name 2", 
+            "pages": [
+              "projects/client2/overview",
+              "projects/client2/technical-specs",
+              "projects/client2/integrations"
+            ]
+          },
+          {
+            "group": "Internal Tools",
+            "pages": [
+              "projects/internal/tool-dashboard",
+              "projects/internal/automation-scripts"
             ]
           }
         ]
