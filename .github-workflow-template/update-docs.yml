@@ -1,0 +1,121 @@
+name: Update ThinkBedo Documentation
+
+on:
+  push:
+    branches: [main, master]
+    # Trigger only on relevant file changes
+    paths:
+      - 'src/**'
+      - '**.md'
+      - 'CHANGELOG.md'
+      - 'docs/**'
+
+jobs:
+  update-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2  # Get last 2 commits for diff
+
+      - name: Checkout docs repository
+        uses: actions/checkout@v3
+        with:
+          repository: thinkbedo/docs
+          token: ${{ secrets.DOCS_REPO_TOKEN }}
+          path: docs-repo
+          ref: main
+
+      - name: Extract commit information
+        id: commit_info
+        run: |
+          # Get commit details
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          COMMIT_AUTHOR=$(git log -1 --pretty=%an)
+          COMMIT_SHA=$(git log -1 --pretty=%H)
+          COMMIT_SHORT_SHA=$(git log -1 --pretty=%h)
+          REPO_NAME="${GITHUB_REPOSITORY##*/}"
+          
+          # Get changed files
+          CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r HEAD | head -20)
+          
+          # Output for next steps
+          {
+            echo "commit_msg<<EOF"
+            echo "$COMMIT_MSG"
+            echo "EOF"
+            echo "commit_author=$COMMIT_AUTHOR"
+            echo "commit_sha=$COMMIT_SHORT_SHA"
+            echo "repo_name=$REPO_NAME"
+            echo "changed_files<<EOF"
+            echo "$CHANGED_FILES"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Update changelog documentation
+        env:
+          COMMIT_MSG: ${{ steps.commit_info.outputs.commit_msg }}
+          COMMIT_AUTHOR: ${{ steps.commit_info.outputs.commit_author }}
+          COMMIT_SHA: ${{ steps.commit_info.outputs.commit_sha }}
+          REPO_NAME: ${{ steps.commit_info.outputs.repo_name }}
+          CHANGED_FILES: ${{ steps.commit_info.outputs.changed_files }}
+        run: |
+          cd docs-repo
+          DATE=$(date +"%B %d, %Y")
+          
+          # Ensure changelog directory exists
+          mkdir -p changelogs
+          
+          # Create or append to changelog file
+          CHANGELOG_FILE="changelogs/$(date +%Y-%m).mdx"
+          
+          if [ ! -f "$CHANGELOG_FILE" ]; then
+            # Create new monthly changelog file
+            cat > "$CHANGELOG_FILE" << 'HEADER'
+---
+title: "Changelog - $(date +"%B %Y")"
+description: "Recent updates and changes"
+---
+
+HEADER
+          fi
+          
+          # Append new entry
+          cat >> "$CHANGELOG_FILE" << EOF
+          
+## $DATE - [$REPO_NAME]
+
+**Commit**: \`$COMMIT_SHA\` by $COMMIT_AUTHOR
+
+**Changes**:
+$COMMIT_MSG
+
+**Modified Files**:
+\`\`\`
+$CHANGED_FILES
+\`\`\`
+
+---
+
+EOF
+
+      - name: Commit and push changes
+        run: |
+          cd docs-repo
+          git config user.name "Documentation Bot"
+          git config user.email "bot@thinkbedo.com"
+          git add .
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "📝 Auto-update from ${{ steps.commit_info.outputs.repo_name }}: ${{ steps.commit_info.outputs.commit_sha }}"
+            git push origin main
+          fi
+
+      - name: Notify completion
+        if: success()
+        run: |
+          echo "✅ Documentation updated successfully!"
+          echo "View at: https://github.com/thinkbedo/docs"

@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "ThinkBedo Documentation",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#3B82F6",
+    "light": "#60A5FA",
+    "dark": "#1E40AF"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -44,6 +44,12 @@
               "ai-tools/claude-code",
               "ai-tools/windsurf"
             ]
+          },
+          {
+            "group": "Updates",
+            "pages": [
+              "changelogs/2026-01"
+            ]
           }
         ]
       },
@@ -66,19 +72,34 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Projects",
+        "groups": [
+          {
+            "group": "ScalePilot",
+            "pages": [
+              "projects/scalepilot/overview",
+              "projects/scalepilot/architecture",
+              "projects/scalepilot/changelog",
+              "projects/scalepilot/known-issues",
+              "projects/scalepilot/development-notes"
+            ]
+          }
+        ]
       }
     ],
     "global": {
       "anchors": [
         {
           "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
+          "href": "https://docs.thinkbedo.com",
           "icon": "book-open-cover"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "GitHub",
+          "href": "https://github.com/thinkbedo",
+          "icon": "github"
         }
       ]
     }
@@ -91,13 +112,13 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@thinkbedo.com"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://dashboard.thinkbedo.com"
     }
   },
   "contextual": {
@@ -114,9 +135,9 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/thinkbedo",
+      "github": "https://github.com/thinkbedo",
+      "linkedin": "https://linkedin.com/company/thinkbedo"
     }
   }
 }
